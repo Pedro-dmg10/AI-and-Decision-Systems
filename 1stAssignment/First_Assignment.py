@@ -1,5 +1,5 @@
 import numpy as np
-#import pandas as pd
+import pandas as pd
 import ast
 
 def read_bap_file(file_path):
@@ -25,17 +25,17 @@ def read_bap_file(file_path):
         for _ in range(n):
             row = list(map(int, file.readline().strip().split()))
             bap_matrix.append(row)
-            ai.append(row[0])  # Adiciona o primeiro valor à lista ai
-            pi.append(row[1])  # Adiciona o segundo valor à lista pi
-            si.append(row[2])  # Adiciona o terceiro valor à lista si
-            wi.append(row[3])  # Adiciona o quarto valor à lista wi
+            ai.append(row[0])  # Adds the first value to list ai
+            pi.append(row[1])  # Adds the second value to list pi
+            si.append(row[2])  # Adds the third value to list si
+            wi.append(row[3])  # Adds the fourth value to list wi
 
     return s, n, bap_matrix, ai, pi, si, wi
 
 
 
-#Inicializa as variáveis chamando a função corretamente
-s, n, bap_matrix, ai, pi, si, wi = read_bap_file('ex100.dat')
+#Initializes the variables
+s, n, bap_matrix, ai, pi, si, wi = read_bap_file('ex100.dat')  #It can be either one of the .dat files
 print('Berth Size: ', s)
 print('Number of Vessels: ', n)
 print('Matriz BAP:', bap_matrix)
@@ -51,23 +51,22 @@ def process_array(output_file):
     vi = []
 
     with open(output_file, 'r') as file:
-        # Ler o conteúdo do arquivo
+        # Reads the content file
         solution = file.read().strip()
-        # Converte o conteúdo para um array
+        # Converts the content to an array
         array = ast.literal_eval(solution)
 
-#Itera sobre o array e armazena os valores
+#Iterates the array and stores the values
         for variables in array:
-            ui.append(variables[0])  # Pega o primeiro valor e adiciona à lista ui
-            vi.append(variables[1])  # Pega o segundo valor e adiciona à lista vi
+            ui.append(variables[0])  # Takes the first value and adds to list ui
+            vi.append(variables[1])  # Takes the second value and adds to list vi
 
     return ui, vi
 
-#Chama a função para processar o arquivo de output
-output_file = 'ex100.plan'
+
+output_file = 'ex100.plan' #It can be either one of the .plan files
 ui, vi = process_array(output_file)
 
-#Exemplo de impressão das listas resultantes
 print("ui =", ui)
 print("vi =", vi)
 
